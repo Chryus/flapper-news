@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    Post.all
+    respond_with Post.all
   end
 
   def create
