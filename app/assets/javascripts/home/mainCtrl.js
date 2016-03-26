@@ -2,9 +2,8 @@ angular.module('flapperNews')
   .controller('MainCtrl', [
     '$scope',
     'posts',
-    'postPromise',
-    function($scope, posts, postPromise){
-      $scope.posts = postPromise.data;
+    function($scope, posts){
+      $scope.posts = posts.posts;
       $scope.addPost = function() {
         if (!$scope.title || $scope.title === '') {
           alert('Please enter a title'); return

@@ -8,17 +8,17 @@ angular.module('flapperNews', ['ui.router', 'templates'])
           url: '/home',
           templateUrl: 'home/_home.html',
           controller: 'MainCtrl',
-          // resolve: {
-          //   postPromise: ['posts', function(posts){
-          //     return posts.getAll();
-          //   }]
-          // }
           resolve: {
-            postPromise: function($http){
-              // $http returns a promise for the url data
-              return $http({method: 'GET', url: '/posts.json'});
-            }
+            postPromise: ['posts', function(posts){
+              return posts.getAll();
+            }]
           }
+          // resolve: {
+          //   postPromise: function($http){
+          //     // $http returns a promise for the url data
+          //     return $http({method: 'GET', url: '/posts.json'});
+          //   }
+          // }
         })
         .state('posts', {
           url: '/posts/:id',

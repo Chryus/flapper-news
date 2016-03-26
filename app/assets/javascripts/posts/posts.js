@@ -2,12 +2,19 @@ angular.module('flapperNews')
   .factory('posts', [
   '$http',
   function($http){
-    getAll = function() {
-      return $http.get('/posts.json').success(function(data){
-        angular.copy(data, o.posts);
-      });
-    };
-    return 'wew';
+    var o = {
+       posts: []
+     };
+
+     //removed return 
+
+     o.getAll = function() {
+        return $http.get('/posts.json').success(function(data){
+           angular.copy(data, o.posts);
+        });
+     };
+
+  return o; //at the added return 
   }]);
   // function(){
   //   var o = {
