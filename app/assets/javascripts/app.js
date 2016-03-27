@@ -13,12 +13,6 @@ angular.module('flapperNews', ['ui.router', 'templates'])
               return posts.getAll();
             }]
           }
-          // resolve: {
-          //   postPromise: function($http){
-          //     // $http returns a promise for the url data
-          //     return $http({method: 'GET', url: '/posts.json'});
-          //   }
-          // }
         })
         .state('posts', {
           url: '/posts/:id',

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  skip_before_action :verify_authenticity_token # temporary fix before adding devise
 
   def index
     respond_with Post.all
