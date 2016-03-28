@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  skip_before_action :verify_authenticity_token # temporary fix before adding devise
+
   def create
     post = Post.find(params[:post_id])
     comment = post.comments.create(comment_params)
