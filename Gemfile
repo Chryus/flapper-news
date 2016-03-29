@@ -17,8 +17,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #db
 gem 'pg'
 
-# angular
+#auth
+gem 'devise'
 
+# angular
 # compiles html templates into javascript and inserts them into Angular's $templateCache
 gem 'angular-rails-templates'
 
