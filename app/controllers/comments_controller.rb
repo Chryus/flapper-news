@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  skip_before_action :verify_authenticity_token # temporary fix before adding devise
+  before_filter :authenticate_user!, only: [:create, :upvote]
 
   def create
     post = Post.find(params[:post_id])

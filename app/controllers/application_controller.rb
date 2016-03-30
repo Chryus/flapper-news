@@ -3,15 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  rescue_from ActionController::InvalidAuthenticityToken do |exception|
+    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+    render :json => {error: 'invalid token'}, status: :unprocessable_entity
+  end
+
   respond_to :json
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :set_csrf_cookie_for_ng
-
-  # rescue_from ActionController::InvalidAuthenticityToken do |exception|
-  #   cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
-  #   render :error => 'invalid token', {:status => :unprocessable_entity}
-  # end
 
   def set_csrf_cookie_for_ng
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?

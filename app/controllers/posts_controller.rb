@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  skip_before_action :verify_authenticity_token # temporary fix before adding devise
+  before_filter :authenticate_user!, only: [:create, :upvote]
 
   def index
     respond_with Post.all
