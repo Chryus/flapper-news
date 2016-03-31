@@ -12,9 +12,10 @@
     <span ng-hide="post.link">
       {{post.title}}
     </span>
+    <span style="font-size:14px">posted by <a ng-href="#/users/{{post.user.username}}">{{post.user.username}}</a></span>
   </span>
   <span>
-    <a href="#/posts/{{post.id}}">Comments</a>
+    <a style="color:gray;" href="#/posts/{{post.id}}">Comments</a>
   </span>
 </div>
 
